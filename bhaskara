@@ -1,0 +1,59 @@
+#include <iostream>
+using namespace std;
+#include <cmath>
+
+float delta (float i, float j, float k);
+float baskara1 (float i, float j, float k);
+float baskara2 (float i, float j, float k);
+void alerta (float& dlt);
+int cont = 0;
+int main () {
+    float a, b, c;
+    do {
+    cout << "\n-------------------------------------------\n" ; 
+    cout << "Digite os coeficientes da equacao\n";
+    cout << "a: ";
+    cin >> a;
+    cout << "b: ";
+    cin >> b;
+    cout << "c: ";
+    cin >> c;
+    cout << "-------------------------------------------\n" ;
+    cout << "X' = " << baskara1 (a, b, c) << endl;
+    cout << "X'' = " << baskara2 (a, b, c);
+    } while ( a != 0.0);
+   
+
+}
+float delta (float i, float j, float k) {
+    float dlt;
+    dlt = (j*j) - 4 * i * k;
+    return dlt;
+}
+float baskara1 (float i, float j, float k) {
+    float r1;
+    float dlt = delta (i, j, k);
+    alerta (dlt);
+    float r = sqrt (dlt);
+    r1 = (- j + r )/(2 * i);
+    return r1;
+}
+float baskara2 (float i, float j, float k) {
+    float r2;
+    float dlt = delta (i, j, k);
+    float r = sqrt (dlt);
+    r2 = (- j - r )/(2 * i);
+    return r2;
+}
+void alerta (float& dlt) {
+    
+    if (dlt > 0) 
+        return;
+    else {
+        cont ++;
+        cout << "A equacao nao possui raizes reais\n";
+        cout << "Numero de chamadas a alerta = " << cont << endl;
+    }
+}
+
+
